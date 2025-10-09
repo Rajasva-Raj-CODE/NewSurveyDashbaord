@@ -331,17 +331,17 @@ export default function InfrastructureTech() {
                 <div className="p-3 flex-1 flex flex-col">
                   {/* Icon using the provided image as a small badge, not a background */}
                   <div className="flex items-start justify-between">
-                    <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm px-4 py-1 rounded-lg">
+                    <div className="inline-flex items-center gap-2  backdrop-blur-sm px-4 py-1 rounded-lg">
                       <img
                         src={imageSrc}
                         alt=""
-                        className="h-10 rounded-full object-cover"
+                        className="h-22 w-22 rounded-full object-cover"
                       />
                     </div>
                   </div>
 
                   <div className="mt-2">
-                    <h3 className="text-sm font-semibold leading-snug text-white">
+                    <h3 className="text-base font-bold leading-snug text-white">
                       {subRow.indicator}
                     </h3>
                     {subRow.definition || subRow.parentDefinition ? (

@@ -90,7 +90,6 @@ const ChartLegend: React.FC<{
   type: "pie" | "bar";
 }> = ({ data, type }) => {
   return (
-    // Ensured legend takes up appropriate space without excessive shrinking
     <div className="flex-1 grid grid-cols-1 gap-1 min-w-[50%]"> 
       {data.map((item, index) => {
         const name = type === "pie" ? (item as PieDatum).name : (item as BarDatum).category;
@@ -107,17 +106,11 @@ const ChartLegend: React.FC<{
                 style={{ backgroundColor: color }}
               />
               <div className="flex-1 min-w-0">
-                {/* Truncate is removed to show full name, relying on the flex container to manage space */}
                 <p className="text-xs font-medium text-foreground"> 
                   {name}
                 </p>
               </div>
             </div>
-            {/* <div className="flex-shrink-0 ml-2">
-              <span className="text-xs font-bold text-primary bg-primary/10 px-1.5 py-0.5 rounded-full">
-                {percentage}%
-              </span>
-            </div> */}
           </div>
         );
       })}
@@ -127,7 +120,7 @@ const ChartLegend: React.FC<{
 
 // --- Main Component: EquitableAccess ---
 export default function EquitableAccess() {
-  // Data definitions remain the same
+  // Data definitions with your specific data
   const proximityData: PieDatum[] = [
     { name: "100-200m", value: 62 },
     { name: "500m", value: 38 },
@@ -187,7 +180,7 @@ export default function EquitableAccess() {
     {
       title: "Perception on sufficient availability of water",
       definition:
-        "Illustrates the respondents’ judgment that enough water was available when needed (volume/flow, refill frequency, and ability to obtain adequate personal consumption",
+        "Illustrates the respondents' judgment that enough water was available when needed (volume/flow, refill frequency, and ability to obtain adequate personal consumption",
       icon: <Droplets className="w-5 h-5" />,
       data: waterAvailabilityData,
       inference:
@@ -226,18 +219,13 @@ export default function EquitableAccess() {
     },
   ];
 
-  // --- Chart Rendering Function (Optimized for Legend) ---
+  // --- Chart Rendering Function (FIXED for bar charts) ---
   const renderChart = (indicator: Indicator) => {
-    const chartHeight = 220;
-    // Reduced radius for more legend space
-    const pieRadius = 55; 
-    
     if (indicator.type === "pie") {
+      const pieRadius = 60;
       return (
-        // Adjusted gap for tighter packing
-        <div className="flex items-center gap-3"> 
-          {/* Pie Chart (fixed size for better layout control) */}
-          <div className="flex-shrink-0 relative w-[110px] h-[110px]">
+        <div className="flex items-center gap-3 h-full">
+          <div className="flex-shrink-0 relative w-[120px] h-[120px]">
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
                 <RechartsTooltip
@@ -270,38 +258,47 @@ export default function EquitableAccess() {
               </PieChart>
             </ResponsiveContainer>
           </div>
-
-          {/* Legend */}
           <ChartLegend data={indicator.data as PieDatum[]} type="pie" />
         </div>
       );
     } else {
+      // FIXED: Proper bar chart sizing with adequate space
       return (
-        <div className="space-y-4">
-          <div className="p-1 rounded-lg bg-background/50 border border-border/50">
-            <ResponsiveContainer width="100%" height={chartHeight}>
-              <BarChart data={indicator.data as BarDatum[]}>
+        <div className="h-full flex flex-col">
+          {/* Chart Container with proper height */}
+          <div className="flex-1 min-h-[180px]">
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart 
+                data={indicator.data as BarDatum[]}
+                margin={{ top: 20, right: 10, left: 0, bottom: 40 }} // Adequate bottom margin for labels
+              >
                 <CartesianGrid stroke="hsl(var(--border))" strokeDasharray="3 3" vertical={false} />
-                <XAxis
+                {/* <XAxis
                   dataKey="category"
-                  angle={-35}
+                  angle={-30} // Reduced angle for better readability
                   textAnchor="end"
-                  height={80}
-                  fontSize={10}
+                  height={50} // Adequate height for labels
+                  fontSize={11}
                   stroke="hsl(var(--foreground))"
-                />
+                  interval={0}
+                /> */}
                 <YAxis
                   fontSize={10}
                   domain={[0, 100]}
                   allowDecimals={false}
                   tickFormatter={(value) => `${value}%`}
                   stroke="hsl(var(--foreground))"
+                  width={35}
                 />
                 <RechartsTooltip
                   content={<CustomTooltip type="bar" />}
                   wrapperStyle={{ outline: "none" }}
                 />
-                <Bar dataKey="value" radius={[4, 4, 0, 0]} barSize={30}>
+                <Bar 
+                  dataKey="value" 
+                  radius={[4, 4, 0, 0]} 
+                  barSize={32} // Proper bar size
+                >
                   {(indicator.data as BarDatum[]).map((entry, index) => (
                     <Cell
                       key={`cell-${index}`}
@@ -315,20 +312,21 @@ export default function EquitableAccess() {
                     formatter={(value: number) => `${value}%`}
                     fontSize={10}
                     fill="hsl(var(--foreground))"
+                    offset={10}
                   />
                 </Bar>
               </BarChart>
             </ResponsiveContainer>
           </div>
           
-          {/* Data Summary / Legend for Bar Chart */}
-          <ChartLegend data={indicator.data as BarDatum[]} type="bar" />
+          {/* Legend below chart */}
+          <div className="mt-3">
+            <ChartLegend data={indicator.data as BarDatum[]} type="bar" />
+          </div>
         </div>
       );
     }
   };
-
-  const tableRows = surveyIndicators.map((indicator) => ({ indicator }));
 
   // --- Main Render ---
   return (
@@ -336,7 +334,7 @@ export default function EquitableAccess() {
       <div className="space-y-6 p-4">
         {/* Header Section */}
         <div className="text-center mb-6 py-4 rounded-xl bg-background shadow-xl border border-border/50">
-        <h1 className="text-4xl font-extrabold tracking-tight text-center leading-tight bg-gradient-to-r from-sky-500 to-fuchsia-500 bg-clip-text text-transparent sm:text-5xl">
+          <h1 className="text-4xl font-extrabold tracking-tight text-center leading-tight bg-gradient-to-r from-sky-500 to-fuchsia-500 bg-clip-text text-transparent sm:text-5xl">
             Equitable Access to WaSH Services
           </h1>
           <p className="text-xl font-medium mt-2 text-primary dark:text-primary-foreground/90">
@@ -348,42 +346,33 @@ export default function EquitableAccess() {
           </div>
         </div>
 
-        {/* Compact Grid Layout */}
+        {/* Compact Grid Layout - Equal distribution */}
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
-          {/* Main Indicators */}
-          {tableRows.map(({ indicator }, i) => (
+          {surveyIndicators.map((indicator, i) => (
             <Card
               key={i}
               className="rounded-2xl bg-gradient-to-br from-background via-card to-background
                 dark:from-slate-950/70 dark:via-slate-900 dark:to-slate-950/70
                 border border-primary/20 shadow-xl hover:shadow-2xl
-                transition-all duration-500 ease-in-out hover:scale-[1.01]"
+                transition-all duration-500 ease-in-out hover:scale-[1.01] min-h-[450px]" // Increased height for bar charts
             >
-              <CardContent className="p-6">
+              <CardContent className="p-4 h-full flex flex-col">
                 {/* Title */}
-                <div className="flex items-center gap-3 mb-4 border-b pb-3 border-border/50">
+                <div className="flex items-center gap-3 mb-3 border-b pb-2 border-border/50">
                   <div className={`p-2 rounded-full bg-gradient-to-br ${i % 2 === 0 ? 'from-cyan-500 to-blue-600' : 'from-green-500 to-teal-600'} text-white shadow-lg`}>
                     {indicator.icon}
                   </div>
-                  <h4 className="font-bold text-xl leading-snug text-foreground">
+                  <h4 className="font-bold text-lg leading-tight text-foreground line-clamp-2">
                     {indicator.title}
                   </h4>
                 </div>
 
-                {/* Content Grid */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                  {/* Chart Section */}
-                  <div className="order-first lg:order-last bg-white/50 dark:bg-slate-900/40 p-3 rounded-xl border border-border/50 shadow-inner">
-                    <h5 className="text-sm font-semibold text-secondary-foreground mb-2 text-center flex items-center justify-center">
-                       <span className="mr-1">📊</span> Indicators
-                    </h5>
-                    {renderChart(indicator)}
-                  </div>
-                  
+                {/* Content Grid - Equal distribution */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 flex-1">
                   {/* Text Content */}
-                  <div className="space-y-4 order-last lg:order-first">
+                  <div className="space-y-3 flex flex-col">
                     {/* Definition */}
-                    <div className="bg-primary/10 p-4 rounded-lg border-l-4 border-primary shadow-sm">
+                    <div className="bg-primary/10 p-3 rounded-lg border-l-4 border-primary shadow-sm flex-1">
                       <p className="text-xs uppercase font-bold text-primary mb-1">
                         Definition
                       </p>
@@ -393,7 +382,7 @@ export default function EquitableAccess() {
                     </div>
 
                     {/* Inference */}
-                    <div className="bg-secondary/10 p-4 rounded-lg border-l-4 border-secondary shadow-sm">
+                    <div className="bg-secondary/10 p-3 rounded-lg border-l-4 border-secondary shadow-sm flex-1">
                       <p className="text-xs uppercase font-bold text-secondary-foreground mb-1">
                         Inference
                       </p>
@@ -402,30 +391,40 @@ export default function EquitableAccess() {
                       </p>
                     </div>
                   </div>
+                  
+                  {/* Chart Section - Now with proper bar chart sizing */}
+                  <div className="bg-white/50 dark:bg-slate-900/40 p-3 rounded-xl border border-border/50 shadow-inner flex flex-col">
+                    <h5 className="text-sm font-semibold text-secondary-foreground mb-2 text-center flex items-center justify-center">
+                      <span className="mr-1">📊</span> Indicators
+                    </h5>
+                    <div className="flex-1">
+                      {renderChart(indicator)}
+                    </div>
+                  </div>
                 </div>
               </CardContent>
             </Card>
           ))}
         </div>
 
-        {/* Bottom Section - Handwashing and Key Facts */}
+        {/* Bottom Section - Compact layout */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
           {/* Handwashing availability */}
           <Card className="rounded-2xl bg-gradient-to-br from-violet-100 to-fuchsia-100 
             dark:from-violet-950/50 dark:to-fuchsia-950/50 border border-fuchsia-500/50 shadow-lg">
-            <CardContent className="p-6">
-              <div className="flex items-center gap-3 mb-4 border-b pb-3 border-border/50">
+            <CardContent className="p-4">
+              <div className="flex items-center gap-3 mb-3 border-b pb-2 border-border/50">
                 <div className="p-2 rounded-full bg-gradient-to-br from-fuchsia-500 to-violet-600 text-white shadow-lg">
                   <Handshake className="w-5 h-5" />
                 </div>
-                <h4 className="font-bold text-xl">Handwashing Stations Ratio</h4>
+                <h4 className="font-bold text-lg">Handwashing Stations Ratio</h4>
               </div>
-              <p className="text-sm text-muted-foreground mb-4">
+              <p className="text-sm text-muted-foreground mb-3">
                 Availability of handwashing points supporting sanitation use, measured against toilet density.
               </p>
-              <div className="bg-white dark:bg-slate-900/90 p-6 rounded-xl border border-fuchsia-300 dark:border-fuchsia-700 text-center shadow-inner">
-                <div className="text-6xl font-extrabold text-fuchsia-600 dark:text-fuchsia-400 mb-1 leading-none">2:10</div>
-                <div className="text-lg font-semibold text-foreground">Handwashing stations per 10 toilets</div>
+              <div className="bg-white dark:bg-slate-900/90 p-4 rounded-xl border border-fuchsia-300 dark:border-fuchsia-700 text-center shadow-inner">
+                <div className="text-5xl font-extrabold text-fuchsia-600 dark:text-fuchsia-400 mb-1 leading-none">2:10</div>
+                <div className="text-md font-semibold text-foreground">Handwashing stations per 10 toilets</div>
               </div>
             </CardContent>
           </Card>
@@ -433,25 +432,25 @@ export default function EquitableAccess() {
           {/* Key facts */}
           <Card className="rounded-2xl bg-gradient-to-br from-sky-100 to-indigo-100 
             dark:from-slate-950/50 dark:to-indigo-950/50 border border-blue-500/50 shadow-lg">
-            <CardContent className="p-6">
-              <div className="flex items-center gap-3 mb-4 border-b pb-3 border-border/50">
+            <CardContent className="p-4">
+              <div className="flex items-center gap-3 mb-3 border-b pb-2 border-border/50">
                 <div className="p-2 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 text-white shadow-lg">
                   <Info className="w-5 h-5" />
                 </div>
-                <h4 className="font-bold text-xl">Key Observational Facts</h4>
+                <h4 className="font-bold text-lg">Key Observational Facts</h4>
               </div>
-              <p className="text-sm text-muted-foreground mb-4">
+              <p className="text-sm text-muted-foreground mb-3">
                 Additional observations and triangulation notes from on-site assessments and data sources.
               </p>
-              <ul className="list-none text-base space-y-3 leading-relaxed">
+              <ul className="list-none text-sm space-y-2 leading-relaxed">
                 <li className="flex items-start text-foreground">
-                    <span className="text-green-500 mr-3 text-lg font-bold flex-shrink-0">✓</span>
+                    <span className="text-green-500 mr-2 text-lg font-bold flex-shrink-0">✓</span>
                     <p>
                         Our Observations and stakeholder consultations reveal that **no people were drinking water from surface sources**, i.e. from the rivers.
                     </p>
                 </li>
                 <li className="flex items-start text-foreground">
-                    <span className="text-green-500 mr-3 text-lg font-bold flex-shrink-0">✓</span>
+                    <span className="text-green-500 mr-2 text-lg font-bold flex-shrink-0">✓</span>
                     <p>
                         Data from PMA indicates that the **availability of sanitation facility** such as toilets and handwashing stations was **40 person per hour per toilet**.
                     </p>

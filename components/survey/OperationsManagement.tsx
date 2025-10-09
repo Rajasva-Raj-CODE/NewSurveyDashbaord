@@ -125,7 +125,7 @@ export default function OperationsManagement() {
   // Combined Row Definition (Indicator | Definition | Inference | Data)
   const matrixRows = [
     // ... (rows 1-5 remain the same)
-    {
+{
       title:
         "Safe Operation of Water Infrastructure (ATMs, Tankers, Standposts)",
       definition:
@@ -133,14 +133,12 @@ export default function OperationsManagement() {
       inference:
         "Active monitoring and operator engagement ensured the hygiene and correct usage of key water points, minimizing service disruptions.",
       data: (
-        <div className="mt-2 flex flex-col items-center p-2">
-          <div className="w-full max-w-lg rounded-xl border-4 border-blue-200 dark:border-blue-900/40 shadow-lg overflow-hidden">
+        <div className="flex flex-col items-center">
+          <div className="w-full aspect-[16/13] relative rounded-lg border-2 border-blue-200 dark:border-blue-900/40 shadow-lg overflow-hidden">
             <Image
               src="/survey/State_operation_management/figure_c1.jpeg"
               alt="ATM Machine operator explaining its proper usage; monitoring the infrastructure services"
-              width={1200}
-              height={675}
-              layout="responsive"
+              fill
               className="object-cover"
             />
           </div>
