@@ -24,7 +24,6 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend,
   ResponsiveContainer,
   BarChart,
   Bar,
@@ -141,11 +140,13 @@ export default function OperationsManagement() {
               fill
               className="object-cover"
             />
+            {/* Modern Caption Bar at bottom */}
+              <div className="absolute inset-x-0 bottom-0 bg-black/60 backdrop-blur-sm px-3 py-2">
+                <p className="text-xs font-normal text-white/90">
+                  <strong>Figure M:</strong> ATM operator explaining usage; demonstrating active monitoring of services.
+                </p>
+              </div>
           </div>
-          <p className="text-xs text-muted-foreground mt-2 text-center italic">
-            ATM operator explaining usage; demonstrating active monitoring of
-            services.
-          </p>
         </div>
       ),
     },
@@ -154,11 +155,11 @@ export default function OperationsManagement() {
       definition:
         "Assessing how effectively water infrastructure was strategically placed to ensure pilgrims' easy, timely, and crowd-free access to safe drinking water.",
       inference:
-        "A total of **90%** of respondents were satisfied with the timely planning and adequacy of water facilities, with no explicit dissatisfaction, reflecting efficient planning and mapping of services before their implementation.",
+        "A total of <strong className='text-green-600 dark:text-green-400 font-semibold'>90%</strong> of respondents were satisfied with the timely planning and adequacy of water facilities, with no explicit dissatisfaction, reflecting efficient planning and mapping of services before their implementation.",
       data: (
         <Card className="rounded-xl border-2 border-cyan-400/50 bg-gradient-to-br from-cyan-50/50 to-blue-50/50 dark:from-cyan-950/20 dark:to-blue-950/20 shadow-lg">
           <CardHeader className="py-3 px-4 border-b border-cyan-400/50 bg-cyan-400/10 dark:bg-cyan-900/20">
-            <CardTitle className="text-base font-bold flex items-center gap-2 text-cyan-700 dark:text-cyan-300">
+            <CardTitle className="text-base font-semibold flex items-center gap-2 text-cyan-700 dark:text-cyan-300">
               <Users className="w-4 h-4" />
               Pilgrim Satisfaction with Water Planning
             </CardTitle>
@@ -166,7 +167,7 @@ export default function OperationsManagement() {
           <CardContent className="pt-4 px-4 space-y-4">
             <div className="grid grid-cols-3 gap-2">
               <div className="p-2 bg-blue-100/70 dark:bg-blue-900/40 rounded-lg border border-blue-300 dark:border-blue-700/50 text-center">
-                <p className="text-2xl font-extrabold text-blue-700 dark:text-blue-300">
+                <p className="text-2xl font-bold text-blue-700 dark:text-blue-300">
                   27%
                 </p>
                 <p className="text-xs font-medium text-blue-900 dark:text-blue-100">
@@ -174,7 +175,7 @@ export default function OperationsManagement() {
                 </p>
               </div>
               <div className="p-2 bg-emerald-100/70 dark:bg-emerald-900/40 rounded-lg border border-emerald-300 dark:border-emerald-700/50 text-center">
-                <p className="text-2xl font-extrabold text-emerald-700 dark:text-emerald-300">
+                <p className="text-2xl font-bold text-emerald-700 dark:text-emerald-300">
                   63%
                 </p>
                 <p className="text-xs font-medium text-emerald-900 dark:text-emerald-100">
@@ -182,7 +183,7 @@ export default function OperationsManagement() {
                 </p>
               </div>
               <div className="p-2 bg-slate-100/70 dark:bg-slate-900/40 rounded-lg border border-slate-300 dark:border-slate-700/50 text-center">
-                <p className="text-2xl font-extrabold text-slate-700 dark:text-slate-300">
+                <p className="text-2xl font-bold text-slate-700 dark:text-slate-300">
                   10%
                 </p>
                 <p className="text-xs font-medium text-slate-900 dark:text-slate-100">
@@ -199,7 +200,7 @@ export default function OperationsManagement() {
       definition:
         "The capacity of water infrastructure to reliably meet the drinking water needs of the pilgrims.",
       inference:
-        "The infrastructure demonstrated sufficient capacity, delivering up to 15,000 litres daily. Crucially, backup systems were successfully implemented for peak days (Shahi Snans), ensuring zero supply interruption.",
+        "The infrastructure demonstrated sufficient capacity, delivering up to <strong className='text-blue-600 dark:text-blue-400 font-semibold'>15,000 litres daily</strong>. Crucially, <strong className='text-green-600 dark:text-green-400 font-semibold'>backup systems</strong> were successfully implemented for peak days (Shahi Snans), ensuring <strong className='text-green-600 dark:text-green-400 font-semibold'>zero supply interruption</strong>.",
       data: (
         <Card className="rounded-xl border-2 border-emerald-400/50 bg-emerald-50/70 dark:bg-emerald-900/20 shadow-lg">
           <CardContent className="p-4 flex items-center gap-4">
@@ -211,8 +212,8 @@ export default function OperationsManagement() {
               <p className="text-2xl font-bold text-gray-800 dark:text-gray-100 leading-tight">
                 12,000 - 15,000 Litres
               </p>
-              <p className="text-xs text-gray-600 dark:text-gray-400 mt-1">
-                *Supply sustained throughout, with **backup sources** deployed
+              <p className="text-xs font-normal text-gray-600 dark:text-gray-400 mt-1">
+                *Supply sustained throughout, with <strong className='text-green-600 dark:text-green-400 font-semibold'>backup sources</strong> deployed
                 for peak Shahi Snan days.
               </p>
             </div>
@@ -229,35 +230,36 @@ export default function OperationsManagement() {
       data: (
         <div className="mt-2 grid grid-cols-1 md:grid-cols-2 gap-3 p-2">
           <div className="flex flex-col items-center p-2 bg-white/70 dark:bg-slate-900/40 rounded-lg shadow-inner">
-            <div className="w-full h-auto rounded-md border overflow-hidden">
+            <div className="w-full aspect-[4/3] relative rounded-md border overflow-hidden">
               <Image
                 src="/survey/Maintenance of a hygienic environment/figure_c2.png"
                 alt="Sprinkling of malathion and bleaching powder"
-                width={1200}
-                height={675}
-                layout="responsive"
+                fill
                 className="object-cover"
               />
+              {/* Modern Caption Bar at bottom */}
+              <div className="absolute inset-x-0 bottom-0 bg-black/60 backdrop-blur-sm px-2 py-1">
+                <p className="text-xs font-normal text-white/90">
+                  <strong>Figure N:</strong> Sprinkling of malathion & bleaching powder (odor and vector control)
+                </p>
+              </div>
             </div>
-            <p className="text-xs text-muted-foreground mt-2 text-center">
-              Sprinkling of malathion & bleaching powder (odor and vector
-              control)
-            </p>
           </div>
           <div className="flex flex-col items-center p-2 bg-white/70 dark:bg-slate-900/40 rounded-lg shadow-inner">
-            <div className="w-full h-auto rounded-md border overflow-hidden">
+            <div className="w-full aspect-[4/3] relative rounded-md border overflow-hidden">
               <Image
                 src="/survey/Maintenance of a hygienic environment/figure_c3.png"
                 alt="Sanitation worker scrubbing water spillage beneath water ATM"
-                width={1200}
-                height={675}
-                layout="responsive"
+                fill
                 className="object-cover"
               />
+              {/* Modern Caption Bar at bottom */}
+              <div className="absolute inset-x-0 bottom-0 bg-black/60 backdrop-blur-sm px-2 py-1">
+                <p className="text-xs font-normal text-white/90">
+                  <strong>Figure O:</strong> Sanitation worker scrubbing water spillage beneath water ATM
+                </p>
+              </div>
             </div>
-            <p className="text-xs text-muted-foreground mt-2 text-center">
-              Sanitation worker scrubbing water spillage beneath water ATM
-            </p>
           </div>
         </div>
       ),
@@ -272,19 +274,21 @@ export default function OperationsManagement() {
       data: (
         <div className="mt-2 flex flex-col items-center p-2">
           <div className="w-full max-w-lg rounded-xl border-4 border-fuchsia-200 dark:border-fuchsia-900/40 shadow-lg overflow-hidden">
-            <Image
-              src="/survey/State_operation_management/figure_c4.png"
-              alt="Nukkad Natak at Sector 5 by GIWA and Dettol to create awareness of regular handwashing"
-              width={1200}
-              height={675}
-              layout="responsive"
-              className="object-cover"
-            />
+            <div className="w-full aspect-[4/3] relative">
+              <Image
+                src="/survey/State_operation_management/figure_c4.png"
+                alt="Nukkad Natak at Sector 5 by GIWA and Dettol to create awareness of regular handwashing"
+                fill
+                className="object-cover"
+              />
+              {/* Modern Caption Bar at bottom */}
+              <div className="absolute inset-x-0 bottom-0 bg-black/60 backdrop-blur-sm px-3 py-2">
+                <p className="text-xs font-normal text-white/90">
+                  <strong>Figure P:</strong> Nukkad Natak (Street Play) at Sector 5 by GIWA and Dettol promoting regular handwashing.
+                </p>
+              </div>
+            </div>
           </div>
-          <p className="text-xs text-muted-foreground mt-2 text-center italic">
-            Nukkad Natak (Street Play) at Sector 5 by GIWA and Dettol promoting
-            regular handwashing.
-          </p>
         </div>
       ),
     },
@@ -293,37 +297,34 @@ export default function OperationsManagement() {
       definition:
         "Ensuring toilets, urinals, and waste systems remain functional, clean, and accessible through regular maintenance, timely waste disposal, adequate staffing and quick response to breakdowns.",
       inference:
-        "The consistent daily collection and the large increase in waste volume from January to February (from 4.7k MT to 12.1k MT) confirm the sanitation operations successfully scaled to meet the massive pilgrim influx and maintained a clean environment through constant manual cleaning.",
+        "The consistent daily collection and the large increase in waste volume from January to February (from <strong className='text-blue-600 dark:text-blue-400 font-semibold'>4.7k MT</strong> to <strong className='text-green-600 dark:text-green-400 font-semibold'>12.1k MT</strong>) confirm the sanitation operations successfully scaled to meet the massive pilgrim influx and maintained a clean environment through constant manual cleaning.",
       data: (
         // 💡 FIX: This entire block will now take the full width of the main card's content area.
         <div className="space-y-4">
           {/* Visual Evidence Section (Images) - Wrapped in a card-like element for visual separation */}
 <div className="p-3 rounded-xl border border-border/30 shadow-inner bg-white/70 dark:bg-slate-800/50">
-  <h5 className="text-sm font-semibold text-secondary-foreground mb-2 text-center flex items-center justify-center">
-    <BarChart3 className="w-4 h-4 mr-1" />
-    Visual Evidence
-  </h5>
+
   <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
     {[
       {
         src: "/survey/State_operation_management/figure_c5.png",
         alt: "Workers collecting trash with sewage nets",
-        caption: "Collecting trash with nets",
+        caption: "Figure Q: Collecting trash with nets",
       },
       {
         src: "/survey/State_operation_management/figure_c6.png",
         alt: "Workers transporting solid waste by handcarts",
-        caption: "Transporting solid waste",
+        caption: "Figure R: Transporting solid waste",
       },
       {
         src: "/survey/State_operation_management/figure_c7.png",
         alt: "Workers sweeping in sectors 15 and 16",
-        caption: "Sector sweeping operations",
+        caption: "Figure S: Sector sweeping operations",
       },
       {
         src: "/survey/State_operation_management/figure_c8.jpeg",
         alt: "Cleaning of toilets by frontline workers",
-        caption: "Toilets cleaning by workers",
+        caption: "Figure T: Toilets cleaning by workers",
       },
     ].map((img, i) => (
       <div
@@ -337,10 +338,13 @@ export default function OperationsManagement() {
             fill // Use fill instead of responsive
             className="object-cover" // Ensure image covers the area
           />
+          {/* Modern Caption Bar at bottom */}
+          <div className="absolute inset-x-0 bottom-0 bg-black/60 backdrop-blur-sm px-2 py-1">
+            <p className="text-xs font-normal text-white/90">
+              <strong>{img.caption.split(':')[0]}:</strong> {img.caption.split(':').slice(1).join(':').trim()}
+            </p>
+          </div>
         </div>
-        <p className="text-xs text-muted-foreground p-2 text-center">
-          {img.caption}
-        </p>
       </div>
     ))}
   </div>
@@ -349,14 +353,14 @@ export default function OperationsManagement() {
           {/* Waste Collection Charts Section - Full Width Card */}
           <Card className="border rounded-xl border-primary/30 bg-gradient-to-r from-blue-50/70 to-emerald-50/70 dark:from-blue-950/30 dark:to-emerald-950/30">
             <CardHeader className="py-3 px-4 border-b border-primary/20 bg-primary/5">
-              <CardTitle className="text-base font-bold flex items-center gap-2 text-foreground">
+              <CardTitle className="text-base font-semibold flex items-center gap-2 text-foreground">
                 <BarChart3 className="w-4 h-4 text-primary" />
                 Daily Waste Collection Trend (JAN-FEB 2025)
               </CardTitle>
             </CardHeader>
             <CardContent className="pt-4 px-4 space-y-4">
               {/* Using Grid for 70/30 Split */}
-              <div className="grid grid-cols-1 lg:grid-cols-10 gap-4">
+              <div className="grid grid-cols-1 lg:grid-cols-1 gap-4">
                 {/* Daily Waste Weight (MT) - Line Chart (70% Width) */}
                 <div className="lg:col-span-7">
                   <h4 className="text-sm font-semibold mb-2 flex items-center gap-2 text-blue-600 dark:text-blue-400">
@@ -410,7 +414,7 @@ export default function OperationsManagement() {
                 </div>
 
                 {/* Monthly Total Comparison - Bar Chart (30% Width) */}
-                <div className="lg:col-span-3">
+                {/* <div className="lg:col-span-3">
                   <h4 className="text-sm font-semibold mb-2 flex items-center gap-2 text-emerald-600 dark:text-emerald-400">
                     <BarChart3 className="w-3 h-3" />
                     Monthly Total (MT)
@@ -454,7 +458,7 @@ export default function OperationsManagement() {
                       </BarChart>
                     </ResponsiveContainer>
                   </div>
-                </div>
+                </div> */}
               </div>
             </CardContent>
           </Card>
@@ -466,12 +470,12 @@ export default function OperationsManagement() {
       definition:
         "Establishing clear and standardized routines for cleaning and disinfection of WaSH facilities and their surroundings, with defined frequency, responsibilities, and monitoring.",
       inference:
-        "Strong confidence in hygienic management is noted, with **78%** of respondents (infra/service providers) agreeing that cleaning protocols were properly and daily executed. Only a small fraction expressed disagreement.",
+        "Strong confidence in hygienic management is noted, with <strong className='text-green-600 dark:text-green-400 font-semibold'>78%</strong> of respondents (infra/service providers) agreeing that cleaning protocols were properly and daily executed. Only a small fraction expressed disagreement.",
       data: (
         <>
           <Card className="rounded-xl border-2 border-amber-400/50 bg-amber-50/70 dark:bg-amber-900/20 shadow-lg">
             <CardHeader className="py-3 px-4 border-b border-amber-400/50 bg-amber-400/10 dark:bg-amber-900/20">
-              <CardTitle className="text-base font-bold flex items-center gap-2 text-amber-700 dark:text-amber-300">
+              <CardTitle className="text-base font-semibold flex items-center gap-2 text-amber-700 dark:text-amber-300">
                 <LayoutList className="w-4 h-4" />
                 Perception on Maintenance & Cleaning Protocols
               </CardTitle>
@@ -565,31 +569,31 @@ export default function OperationsManagement() {
               {/* Detailed Breakdown */}
               <div className="grid grid-cols-2 lg:grid-cols-5 gap-2 text-center">
                 <div className="p-2 rounded-lg bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200">
-                  <p className="text-sm font-bold text-emerald-600">39%</p>
+                  <p className="text-sm font-semibold text-emerald-600">39%</p>
                   <p className="text-xs font-medium text-emerald-900 dark:text-emerald-100">
                     Str. Agree
                   </p>
                 </div>
                 <div className="p-2 rounded-lg bg-blue-50 dark:bg-blue-950/30 border border-blue-200">
-                  <p className="text-sm font-bold text-blue-600">39%</p>
+                  <p className="text-sm font-semibold text-blue-600">39%</p>
                   <p className="text-xs font-medium text-blue-900 dark:text-blue-100">
                     Agree
                   </p>
                 </div>
                 <div className="p-2 rounded-lg bg-amber-50 dark:bg-amber-950/30 border border-amber-200">
-                  <p className="text-sm font-bold text-amber-600">9%</p>
+                  <p className="text-sm font-semibold text-amber-600">9%</p>
                   <p className="text-xs font-medium text-amber-900 dark:text-amber-100">
                     Neutral
                   </p>
                 </div>
                 <div className="p-2 rounded-lg bg-red-50 dark:bg-red-950/30 border border-red-200">
-                  <p className="text-sm font-bold text-red-600">9%</p>
+                  <p className="text-sm font-semibold text-red-600">9%</p>
                   <p className="text-xs font-medium text-red-900 dark:text-red-100">
                     Disagree
                   </p>
                 </div>
                 <div className="p-2 rounded-lg bg-red-50 dark:bg-red-950/30 border border-red-200">
-                  <p className="text-sm font-bold text-red-600">5%</p>
+                  <p className="text-sm font-semibold text-red-600">5%</p>
                   <p className="text-xs font-medium text-red-900 dark:text-red-100">
                     Str. Disagree
                   </p>
@@ -619,7 +623,7 @@ export default function OperationsManagement() {
           <p className="text-xs uppercase font-bold text-primary mb-1">
             Definition
           </p>
-          <p className="text-sm text-foreground leading-relaxed">
+          <p className="text-sm font-normal text-foreground leading-relaxed">
             {row.definition}
           </p>
         </div>
@@ -629,8 +633,7 @@ export default function OperationsManagement() {
           <p className="text-xs uppercase font-bold text-secondary-foreground mb-1">
             Inference
           </p>
-          <p className="text-sm text-foreground leading-relaxed font-medium">
-            {row.inference}
+          <p className="text-sm font-normal text-foreground leading-relaxed" dangerouslySetInnerHTML={{ __html: row.inference }}>
           </p>
         </div>
 
@@ -646,10 +649,7 @@ export default function OperationsManagement() {
       {/* Data/Chart Section (RIGHT COLUMN) - Only for rows 1-5 and 7 */}
       {row.title !== "Safe Operation and Management of Sanitation Services" && (
         <div className="bg-white/70 dark:bg-slate-800/50 p-3 rounded-xl border border-border/30 shadow-inner min-h-[200px] flex flex-col justify-center">
-          <h5 className="text-sm font-semibold text-secondary-foreground mb-2 text-center flex items-center justify-center">
-            <BarChart3 className="w-4 h-4 mr-1" />
-            Data & Visual Evidence
-          </h5>
+      
           {row.data}
         </div>
       )}
@@ -661,11 +661,11 @@ export default function OperationsManagement() {
     <div className="space-y-6 p-4">
       {/* Header Section */}
       <div className="text-center mb-6 py-4 rounded-xl bg-background shadow-xl border border-border/50">
-        <h1 className="text-4xl font-extrabold tracking-tight text-center leading-tight bg-gradient-to-r from-sky-500 to-fuchsia-500 bg-clip-text text-transparent sm:text-5xl">
+        <h1 className="text-4xl font-bold tracking-tight text-center leading-tight bg-gradient-to-r from-sky-500 to-fuchsia-500 bg-clip-text text-transparent sm:text-5xl">
           State of Operations and Management
         </h1>
-        <p className="text-xl font-medium mt-2 text-primary dark:text-primary-foreground/90">
-          WaSH Services Infrastructure & Service Provider Insights
+        <p className="text-xl font-normal mt-2 text-primary dark:text-primary-foreground/90">
+        Key Stakeholder: Infrastructure & Service Provider Insights
         </p>
       </div>
 
@@ -691,7 +691,7 @@ export default function OperationsManagement() {
                 >
                   <CheckCircle className="w-5 h-5" />
                 </div>
-                <h4 className="font-bold text-xl leading-snug text-foreground">
+                <h4 className="font-semibold text-xl leading-snug text-foreground">
                   {row.title}
                 </h4>
               </div>

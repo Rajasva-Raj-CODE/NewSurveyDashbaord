@@ -22,7 +22,7 @@ export default function SurveyDialog() {
               variant="outline"
               className={`
                         cursor-pointer border text-[var(--text-primary)] border-[var(--text-primary)]
-                        bg-transparent font-medium transition-all duration-300 
+                        bg-transparent text-sm font-medium transition-all duration-300 
                         hover:bg-[var(--accent)] hover:text-[var(--accent-text)] hover:border-[var(--accent)]
                         focus:outline-none focus:ring-1 focus:ring-[var(--accent)] focus:ring-offset-2
                         active:scale-[0.98]
@@ -39,31 +39,33 @@ export default function SurveyDialog() {
 
           <div className="relative h-full bg-background overflow-auto">
             {/* Background Blur Decorations */}
-            <div className="pointer-events-none absolute inset-0 -z-10">
+            {/* <div className="pointer-events-none absolute inset-0 -z-10">
               <div className="absolute -top-32 -left-32 h-96 w-96 rounded-full bg-blue-300/20 blur-3xl" />
               <div className="absolute top-1/3 -right-32 h-96 w-96 rounded-full bg-cyan-300/20 blur-3xl" />
               <div className="absolute bottom-0 left-1/2 h-64 w-[48rem] -translate-x-1/2 rounded-[999px] bg-blue-200/30 blur-3xl" />
-            </div>
+            </div> */}
 
             <div className="container mx-auto py-14 px-6 md:px-10">
               <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
                 {/* Main Tabs */}
                 <div className="sticky top-0 z-50 bg-background/80 backdrop-blur border-b border-border/40">
-                  <TabsList className="flex w-full rounded-2xl bg-card/80 backdrop-blur border border-border/40 shadow-lg">
+                  <TabsList className="flex w-full rounded-2xl bg-card/80 backdrop-blur border border-border/40 shadow-lg p-1">
                     <TabsTrigger
                         value="kwash"
-                        className="flex-1 cursor-pointer rounded-full px-6 py-2 font-medium transition-all data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-cyan-500 data-[state=active]:text-white"
+                        className="flex-1 cursor-pointer rounded-full px-3 sm:px-4 md:px-6 py-2 text-xs sm:text-sm font-medium transition-all data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-cyan-500 data-[state=active]:text-white whitespace-nowrap"
                     >
-                      <Layers className="w-4 h-4 mr-2" />
-                      K-WaSH Framework
+                      <Layers className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2 flex-shrink-0" />
+                      <span className="hidden xs:inline">K-WaSH Framework</span>
+                      <span className="xs:hidden">K-WaSH</span>
                     </TabsTrigger>
 
                     <TabsTrigger
                         value="state"
-                        className="flex-1 cursor-pointer rounded-full px-6 py-2 font-medium transition-all data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-cyan-500 data-[state=active]:text-white"
+                        className="flex-1 cursor-pointer rounded-full px-3 sm:px-4 md:px-6 py-2 text-xs sm:text-sm font-medium transition-all data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-cyan-500 data-[state=active]:text-white whitespace-nowrap"
                     >
-                      <Activity className="w-4 h-4 mr-2" />
-                      State of WaSH Services
+                      <Activity className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2 flex-shrink-0" />
+                      <span className="hidden xs:inline">State of WaSH Services</span>
+                      <span className="xs:hidden">WaSH Services</span>
                     </TabsTrigger>
                   </TabsList>
 
@@ -78,37 +80,41 @@ export default function SurveyDialog() {
                   {/* Sub Tabs */}
                   <Tabs value={activeSubTab} onValueChange={setActiveSubTab}>
                     <div className="sticky top-[45px] z-40 bg-background/80 backdrop-blur border-b border-border/40">
-                      <TabsList className="flex w-full gap-2 p-3 rounded-2xl bg-card/80 backdrop-blur border border-border/40 shadow-lg">
+                        <TabsList className="flex w-full rounded-2xl bg-card/80 backdrop-blur border border-border/40 shadow-lg p-1">
                         <TabsTrigger
                             value="infrastructure"
-                            className="flex-1 cursor-pointer rounded-full px-5 py-2 text-sm font-medium transition-all data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-cyan-500 data-[state=active]:text-white"
+                            className="flex-1 min-w-0 cursor-pointer rounded-full px-2 sm:px-3 md:px-5 py-2 text-xs sm:text-sm font-medium transition-all data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-cyan-500 data-[state=active]:text-white whitespace-nowrap"
                         >
-                          <BarChart3 className="w-4 h-4 mr-2" />
-                          Infrastructure & Technology
+                          <BarChart3 className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2 flex-shrink-0" />
+                          <span className="hidden sm:inline">Infrastructure & Technology</span>
+                          <span className="sm:hidden">Infrastructure</span>
                         </TabsTrigger>
 
                         <TabsTrigger
                             value="access"
-                            className="flex-1 cursor-pointer rounded-full px-5 py-2 text-sm font-medium transition-all data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-cyan-500 data-[state=active]:text-white"
+                            className="flex-1 min-w-0 cursor-pointer rounded-full px-2 sm:px-3 md:px-5 py-2 text-xs sm:text-sm font-medium transition-all data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-cyan-500 data-[state=active]:text-white whitespace-nowrap"
                         >
-                          <Users className="w-4 h-4 mr-2" />
-                          Equitable Access
+                          <Users className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2 flex-shrink-0" />
+                          <span className="hidden sm:inline">Equitable Access</span>
+                          <span className="sm:hidden">Access</span>
                         </TabsTrigger>
 
                         <TabsTrigger
                             value="operations"
-                            className="flex-1 cursor-pointer rounded-full px-5 py-2 text-sm font-medium transition-all data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-cyan-500 data-[state=active]:text-white"
+                            className="flex-1 min-w-0 cursor-pointer rounded-full px-2 sm:px-3 md:px-5 py-2 text-xs sm:text-sm font-medium transition-all data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-cyan-500 data-[state=active]:text-white whitespace-nowrap"
                         >
-                          <Settings className="w-4 h-4 mr-2" />
-                          Operations & Management
+                          <Settings className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2 flex-shrink-0" />
+                          <span className="hidden sm:inline">Operations & Management</span>
+                          <span className="sm:hidden">Operations</span>
                         </TabsTrigger>
 
                         <TabsTrigger
                             value="psychosocial"
-                            className="flex-1 cursor-pointer rounded-full px-5 py-2 text-sm font-medium transition-all data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-cyan-500 data-[state=active]:text-white"
+                            className="flex-1 min-w-0 cursor-pointer rounded-full px-2 sm:px-3 md:px-5 py-2 text-xs sm:text-sm font-medium transition-all data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-cyan-500 data-[state=active]:text-white whitespace-nowrap"
                         >
-                          <Brain className="w-4 h-4 mr-2" />
-                          Psychosocial Factors
+                          <Brain className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2 flex-shrink-0" />
+                          <span className="hidden sm:inline">Psychosocial Factors</span>
+                          <span className="sm:hidden">Psychosocial</span>
                         </TabsTrigger>
                       </TabsList>
                     </div>

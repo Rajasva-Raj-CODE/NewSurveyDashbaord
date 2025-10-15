@@ -114,12 +114,12 @@ export default function KWashFramework() {
 
       <Card className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white border-0 rounded-xl shadow-lg">
         <CardHeader className="pb-2">
-          <CardTitle className="text-3xl font-bold leading-tight">
+          <CardTitle className="text-3xl font-semibold leading-tight">
             About K-WaSH
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
-          <p className="text-lg leading-relaxed opacity-95">
+          <p className="text-base font-normal leading-relaxed opacity-95">
             K-WaSH (Water, Sanitation, and Hygiene for Kumbh) is a strategic framework developed to support the effective planning, monitoring,
             and management of WaSH services at the Kumbh Mela. Infrastructure alone is not enough. The K-WaSH framework offers a comprehensive,
             indicator-based system that helps stakeholders assess the State, identify Pressures, and understand the Impacts of WaSH services in
@@ -130,7 +130,7 @@ export default function KWashFramework() {
 
       {/* Why K-WaSH Matters */}
       <div className="space-y-6 mt-12">
-        <h2 className="text-3xl font-bold text-center mb-2 bg-gradient-to-r from-sky-500 to-fuchsia-500 bg-clip-text text-transparent">Why K-WaSH Matters</h2>
+        <h2 className="text-3xl font-semibold text-center mb-2 bg-gradient-to-r from-sky-500 to-fuchsia-500 bg-clip-text text-transparent">Why K-WaSH Matters</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
           {whyMatters.map((item, index) => (
             <Card
@@ -144,12 +144,12 @@ export default function KWashFramework() {
                     {item.icon}
                   </div>
                 </div>
-                <CardTitle className="text-base font-semibold">
+                <CardTitle className="text-lg font-semibold">
                   {item.title}
                 </CardTitle>
               </CardHeader>
               <CardContent className="pt-0">
-                <p className="text-base text-muted-foreground leading-relaxed">
+                <p className="text-base font-normal text-muted-foreground leading-relaxed">
                   {item.description}
                 </p>
               </CardContent>
@@ -160,7 +160,7 @@ export default function KWashFramework() {
 
       {/* What You Can Do */}
       <div className="space-y-6 mt-12">
-        <h2 className="text-3xl font-bold text-center mb-2 bg-gradient-to-r from-sky-500 to-fuchsia-500 bg-clip-text text-transparent">
+        <h2 className="text-3xl font-semibold text-center mb-2 bg-gradient-to-r from-sky-500 to-fuchsia-500 bg-clip-text text-transparent">
           What You Can Do with the K-WaSH Framework here:
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -175,7 +175,7 @@ export default function KWashFramework() {
                   <div className="p-3 rounded-xl bg-gradient-to-br from-violet-500 to-fuchsia-600 text-white shadow-sm transform transition-transform duration-200 group-hover:scale-105">
                     {item.icon}
                   </div>
-                  <CardTitle className="text-lg leading-tight">{item.title}</CardTitle>
+                  <CardTitle className="text-lg font-semibold leading-tight">{item.title}</CardTitle>
                 </div>
               </CardHeader>
 
@@ -186,13 +186,13 @@ export default function KWashFramework() {
 
       {/* Introducing the K-WaSH Framework */}
       <div className="space-y-6 mt-12">
-        <h2 className="text-3xl font-bold text-center mb-2 bg-gradient-to-r from-sky-500 to-fuchsia-500 bg-clip-text text-transparent">
+        <h2 className="text-3xl font-semibold text-center mb-2 bg-gradient-to-r from-sky-500 to-fuchsia-500 bg-clip-text text-transparent">
           Introducing the K-WaSH Framework: Addressing Water, Sanitation, and
           Hygiene at the Kumbh Mela
         </h2>
         <Card tabIndex={0} className="rounded-xl bg-gradient-to-br from-slate-50 to-indigo-50 dark:from-slate-900/40 dark:to-indigo-900/30 backdrop-blur-sm border border-border/50 shadow-md transition-transform duration-200 hover:-translate-y-0.5 hover:shadow-2xl hover:ring-1 hover:ring-primary/30 hover:bg-primary/5 dark:hover:bg-primary/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:bg-primary/10 dark:focus-visible:bg-primary/20">
           <CardHeader>
-            <CardDescription className="text-lg leading-relaxed">
+            <CardDescription className="text-base font-normal leading-relaxed">
               The K-WaSH framework has been developed to systematically assess and ensure the adequacy of WaSH services during the Kumbh Mela.
               The following delivery of services are important to maintain Water, Sanitation, and Hygiene at the Kumbh Mela:
             </CardDescription>
@@ -205,37 +205,37 @@ export default function KWashFramework() {
                   <div className="p-2.5 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 text-white shadow-sm">
                       <Droplets className="w-5 h-5" />
                     </div>
-                    <span className="font-semibold text-lg">Water</span>
+                    <span className="font-semibold text-xl">Water</span>
                   </div>
                 </AccordionTrigger>
                 <AccordionContent>
-                  <ul className="list-disc pl-6 space-y-3 text-muted-foreground text-base leading-relaxed">
+                  <ul className="list-disc pl-6 space-y-3 text-muted-foreground text-base font-normal leading-relaxed">
                     <li>
                       <span className="font-medium">
                         Availability & Proximity:
                       </span>{" "}
-                      Drinking water should be accessible within 20 minutes or 500 meters.
+                      Drinking water should be accessible within <strong className='text-blue-600 dark:text-blue-400 font-semibold'>20 minutes</strong> or <strong className='text-green-600 dark:text-green-400 font-semibold'>500 meters</strong>.
                     </li>
                     <li>
                       <span className="font-medium">
                         Equitable & Affordable Access:
                       </span>{" "}
-                      All individuals should access safe water within 10 minutes, regardless of socioeconomic status.
+                      All individuals should access safe water within <strong className='text-green-600 dark:text-green-400 font-semibold'>10 minutes</strong>, regardless of socioeconomic status.
                     </li>
                     <li>
                       <span className="font-medium">
                         Quality & Acceptability:
                       </span>{" "}
-                      Water must be potable, contaminant-free, and culturally acceptable.
+                      Water must be <strong className='text-green-600 dark:text-green-400 font-semibold'>potable</strong>, <strong className='text-blue-600 dark:text-blue-400 font-semibold'>contaminant-free</strong>, and <strong className='text-purple-600 dark:text-purple-400 font-semibold'>culturally acceptable</strong>.
                     </li>
                     <li>
                       <span className="font-medium">
                         Quantity & Continuity:
                       </span>{" "}
-                      Adequate water must be reliably available for all uses.
+                      <strong className='text-green-600 dark:text-green-400 font-semibold'>Adequate water</strong> must be <strong className='text-blue-600 dark:text-blue-400 font-semibold'>reliably available</strong> for all uses.
                     </li>
                     <li>
-                      <span className="font-medium">Safety:</span> Water systems must not pose health risks.
+                      <span className="font-medium">Safety:</span> Water systems must not pose <strong className='text-red-600 dark:text-red-400 font-semibold'>health risks</strong>.
                     </li>
                   </ul>
                 </AccordionContent>
@@ -246,7 +246,7 @@ export default function KWashFramework() {
                   <div className="p-2.5 rounded-xl bg-gradient-to-br from-emerald-500 to-green-600 text-white shadow-sm">
                       <Shield className="w-5 h-5" />
                     </div>
-                    <span className="font-semibold text-lg">Sanitation</span>
+                    <span className="font-semibold text-xl">Sanitation</span>
                   </div>
                 </AccordionTrigger>
                 <AccordionContent>
@@ -255,29 +255,29 @@ export default function KWashFramework() {
                       <span className="font-medium">
                         Equitable & Affordable Facility Access:
                       </span>{" "}
-                      Facilities should serve at least 1 per 50 people.
+                      Facilities should serve at least <strong className='text-green-600 dark:text-green-400 font-semibold'>1 per 50 people</strong>.
                     </li>
                     <li>
                       <span className="font-medium">
                         Accessibility & Functionality:
                       </span>{" "}
-                      Facilities must be inclusive and within 100 meters.
+                      Facilities must be <strong className='text-blue-600 dark:text-blue-400 font-semibold'>inclusive</strong> and within <strong className='text-green-600 dark:text-green-400 font-semibold'>100 meters</strong>.
                     </li>
                     <li>
                       <span className="font-medium">
                         Safety, Privacy & Dignity:
                       </span>{" "}
-                      Facilities must uphold hygiene and human dignity.
+                      Facilities must uphold <strong className='text-green-600 dark:text-green-400 font-semibold'>hygiene</strong> and <strong className='text-blue-600 dark:text-blue-400 font-semibold'>human dignity</strong>.
                     </li>
                     <li>
                       <span className="font-medium">Safe Waste Disposal:</span>{" "}
-                      Biomedical and solid waste must be scientifically managed.
+                      <strong className='text-red-600 dark:text-red-400 font-semibold'>Biomedical and solid waste</strong> must be <strong className='text-blue-600 dark:text-blue-400 font-semibold'>scientifically managed</strong>.
                     </li>
                     <li>
                       <span className="font-medium">
                         Environmental Sanitation:
                       </span>{" "}
-                      The site must be clean and free from hazardous waste.
+                      The site must be <strong className='text-green-600 dark:text-green-400 font-semibold'>clean</strong> and <strong className='text-red-600 dark:text-red-400 font-semibold'>free from hazardous waste</strong>.
                     </li>
                   </ul>
                 </AccordionContent>
@@ -288,34 +288,34 @@ export default function KWashFramework() {
                   <div className="p-2.5 rounded-xl bg-gradient-to-br from-pink-500 to-rose-600 text-white shadow-sm">
                       <Heart className="w-5 h-5" />
                     </div>
-                    <span className="font-semibold text-lg">Hygiene</span>
+                    <span className="font-semibold text-xl">Hygiene</span>
                   </div>
                 </AccordionTrigger>
                 <AccordionContent>
                   <ul className="list-disc pl-6 space-y-3 text-muted-foreground text-base leading-relaxed">
                     <li>
                       <span className="font-medium">Health Hygiene:</span>{" "}
-                      Access to safe water, sanitation, and shelter for well-being.
+                      Access to <strong className='text-green-600 dark:text-green-400 font-semibold'>safe water</strong>, <strong className='text-blue-600 dark:text-blue-400 font-semibold'>sanitation</strong>, and <strong className='text-purple-600 dark:text-purple-400 font-semibold'>shelter</strong> for well-being.
                     </li>
                     <li>
                       <span className="font-medium">Menstrual Hygiene:</span>{" "}
-                      Provision of products and private facilities for women.
+                      Provision of <strong className='text-blue-600 dark:text-blue-400 font-semibold'>products</strong> and <strong className='text-purple-600 dark:text-purple-400 font-semibold'>private facilities</strong> for women.
                     </li>
                     <li>
                       <span className="font-medium">Disease Control:</span>{" "}
-                      Measures to prevent vector-borne and communicable diseases.
+                      Measures to prevent <strong className='text-red-600 dark:text-red-400 font-semibold'>vector-borne</strong> and <strong className='text-orange-600 dark:text-orange-400 font-semibold'>communicable diseases</strong>.
                     </li>
                     <li>
                       <span className="font-medium">
                         Awareness & Promotion:
                       </span>{" "}
-                      Promotion of hygiene practices among visitors.
+                      Promotion of <strong className='text-green-600 dark:text-green-400 font-semibold'>hygiene practices</strong> among visitors.
                     </li>
                     <li>
                       <span className="font-medium">
                         Environmental Hygiene:
                       </span>{" "}
-                      Clean, litter-free, and pathogen-free surroundings.
+                      <strong className='text-green-600 dark:text-green-400 font-semibold'>Clean</strong>, <strong className='text-blue-600 dark:text-blue-400 font-semibold'>litter-free</strong>, and <strong className='text-red-600 dark:text-red-400 font-semibold'>pathogen-free</strong> surroundings.
                     </li>
                   </ul>
                 </AccordionContent>
@@ -327,12 +327,12 @@ export default function KWashFramework() {
 
       {/* Indicators: State of WaSH Services */}
       <div className="space-y-6 mt-12">
-        <h2 className="text-3xl font-bold text-center mb-2 bg-gradient-to-r from-sky-500 to-fuchsia-500 bg-clip-text text-transparent">
+        <h2 className="text-3xl font-semibold text-center mb-2 bg-gradient-to-r from-sky-500 to-fuchsia-500 bg-clip-text text-transparent">
           Indicators of the State of WaSH Services
         </h2>
         <Card tabIndex={0} className="rounded-xl bg-gradient-to-br from-slate-50 to-indigo-50 dark:from-slate-900/40 dark:to-indigo-900/30 backdrop-blur-sm border border-border/50 shadow-md transition-transform duration-200 hover:-translate-y-0.5 hover:shadow-2xl hover:ring-1 hover:ring-primary/30 hover:bg-primary/5 dark:hover:bg-primary/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:bg-primary/10 dark:focus-visible:bg-primary/20">
           <CardHeader>
-            <CardDescription className="text-lg leading-relaxed">
+            <CardDescription className="text-base font-normal leading-relaxed">
               In the K-WaSH framework, the State refers to the current condition or status of WaSH services at the Kumbh Mela site. It captures how
               well water, sanitation, and hygiene services are functioning and being accessed by the floating population, based on a set of
               measurable indicators.
@@ -340,7 +340,7 @@ export default function KWashFramework() {
           </CardHeader>
           <CardContent className="space-y-4">
             <div>
-              <p className="text-base leading-relaxed">
+              <p className="text-base font-normal leading-relaxed">
                 <span className="font-semibold">
                   What Does &quot;State&quot; Mean in K-WaSH?
                 </span>
@@ -348,7 +348,7 @@ export default function KWashFramework() {
                 The State represents the observable reality of WaSH service
                 delivery at any given time. It helps answer questions like:
               </p>
-              <ul className="list-disc pl-6 text-base text-muted-foreground space-y-2 leading-relaxed">
+              <ul className="list-disc pl-6 text-base font-normal text-muted-foreground space-y-2 leading-relaxed">
                 <li>
                   Are WaSH services equitable and accessible to all pilgrims?
                 </li>
@@ -362,7 +362,7 @@ export default function KWashFramework() {
               <p className="text-base font-semibold">
                 Key Indicators to evaluate the State of WaSH Services
               </p>
-              <ul className="list-disc pl-6 text-base text-muted-foreground space-y-2 leading-relaxed">
+              <ul className="list-disc pl-6 text-base font-normal text-muted-foreground space-y-2 leading-relaxed">
                 <li>
                   Equitable Service Accessibility: Measures access to clean and
                   safe WaSH services across different social groups (gender,
@@ -388,7 +388,7 @@ export default function KWashFramework() {
             </div>
             <div>
               <p className="text-base font-semibold">Why It Matters</p>
-              <ul className="list-disc pl-6 text-base text-muted-foreground space-y-2 leading-relaxed">
+              <ul className="list-disc pl-6 text-base font-normal text-muted-foreground space-y-2 leading-relaxed">
                 <li>Understanding the State helps stakeholders:</li>
                 <li>Monitor service performance in real time.</li>
                 <li>Identify gaps and areas needing urgent attention.</li>
@@ -402,12 +402,12 @@ export default function KWashFramework() {
 
       {/* Drivers */}
       <div className="space-y-6 mt-12">
-        <h2 className="text-3xl font-bold text-center mb-2 bg-gradient-to-r from-sky-500 to-fuchsia-500 bg-clip-text text-transparent">
+        <h2 className="text-3xl font-semibold text-center mb-2 bg-gradient-to-r from-sky-500 to-fuchsia-500 bg-clip-text text-transparent">
           Indicators of Drivers of WaSH services in Maha Kumbh Mela
         </h2>
         <Card tabIndex={0} className="rounded-xl bg-gradient-to-br from-slate-50 to-indigo-50 dark:from-slate-900/40 dark:to-indigo-900/30 backdrop-blur-sm border border-border/50 shadow-md transition-transform duration-200 hover:-translate-y-0.5 hover:shadow-2xl hover:ring-1 hover:ring-primary/30 hover:bg-primary/5 dark:hover:bg-primary/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:bg-primary/10 dark:focus-visible:bg-primary/20">
           <CardHeader>
-            <CardDescription className="text-lg leading-relaxed">
+            <CardDescription className="text-base font-normal leading-relaxed">
               In the K-WaSH framework, Drivers refer to the underlying human
               behaviours, decisions, and systemic factors that influence the
               delivery and effectiveness of WaSH services at the Kumbh Mela. We
@@ -415,7 +415,7 @@ export default function KWashFramework() {
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-3">
-            <ul className="list-disc pl-6 text-base text-muted-foreground space-y-2 leading-relaxed">
+            <ul className="list-disc pl-6 text-base font-normal text-muted-foreground space-y-2 leading-relaxed">
               <li>
                 <span className="font-medium">Psychosocial Drivers:</span> These
                 include the knowledge, awareness, beliefs, and behaviours of
@@ -446,12 +446,12 @@ export default function KWashFramework() {
 
       {/* Impacts */}
       <div className="space-y-6 mt-12">
-        <h2 className="text-3xl font-bold text-center mb-2 bg-gradient-to-r from-sky-500 to-fuchsia-500 bg-clip-text text-transparent">
+        <h2 className="text-3xl font-semibold text-center mb-2 bg-gradient-to-r from-sky-500 to-fuchsia-500 bg-clip-text text-transparent">
           Identifying Potential Impacts of WaSH services at Kumbh Mela
         </h2>
         <Card className="rounded-xl bg-card/80 backdrop-blur-sm border border-border/50 shadow-md transition-transform duration-200 hover:-translate-y-0.5 hover:shadow-2xl hover:ring-1 hover:ring-primary/20">
           <CardHeader>
-            <CardDescription className="text-lg leading-relaxed">
+            <CardDescription className="text-base font-normal leading-relaxed">
               In the K-WaSH framework, Impact refers to the consequences or
               outcomes that result from the condition of WaSH services and the
               pressures placed on them at the Kumbh Mela Site. Impacts are the
@@ -466,7 +466,7 @@ export default function KWashFramework() {
               <p className="text-base font-semibold">
                 Types of Impacts in K-WaSH
               </p>
-              <ul className="list-disc pl-6 text-base text-muted-foreground space-y-2 leading-relaxed">
+              <ul className="list-disc pl-6 text-base font-normal text-muted-foreground space-y-2 leading-relaxed">
                 <li>
                   Environmental Impacts: For example, pollution of rivers and
                   water sources due to untreated sewage and ritual waste.
@@ -489,7 +489,7 @@ export default function KWashFramework() {
               <p className="text-base font-semibold">
                 Why Impact Matters in K-WaSH
               </p>
-              <ul className="list-disc pl-6 text-base text-muted-foreground space-y-2 leading-relaxed">
+              <ul className="list-disc pl-6 text-base font-normal text-muted-foreground space-y-2 leading-relaxed">
                 <li>
                   By identifying and analysing impacts through the framework,
                   stakeholders can:
@@ -513,12 +513,12 @@ export default function KWashFramework() {
 
       {/* Pressures */}
       <div className="space-y-6 mt-12">
-        <h2 className="text-3xl font-bold text-center mb-2 bg-gradient-to-r from-sky-500 to-fuchsia-500 bg-clip-text text-transparent">
+        <h2 className="text-3xl font-semibold text-center mb-2 bg-gradient-to-r from-sky-500 to-fuchsia-500 bg-clip-text text-transparent">
           What are the Potential Pressures of WaSH services in Kumbh Mela{" "}
         </h2>
         <Card tabIndex={0} className="rounded-xl hover:shadow-xl transition-all duration-200 bg-gradient-to-br from-slate-50 to-indigo-50 dark:from-slate-900/40 dark:to-indigo-900/30 backdrop-blur-sm border border-border/50 hover:bg-primary/5 dark:hover:bg-primary/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:bg-primary/10 dark:focus-visible:bg-primary/20">
           <CardHeader>
-            <CardDescription className="text-lg leading-relaxed">
+            <CardDescription className="text-base font-normal leading-relaxed">
               In the K-WaSH framework, Pressure refers to the immediate stresses
               or strains placed on the WaSH system because of human activities
               and decisions (Drivers). Pressure indicates how and why the WaSH
@@ -531,10 +531,10 @@ export default function KWashFramework() {
               <p className="text-base font-semibold">
                 What Constitutes Pressure in K-WaSH?
               </p>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm font-normal text-muted-foreground">
                 We have categorised Pressures into five thematic categories:
               </p>
-              <ul className="list-disc pl-6 text-base text-muted-foreground space-y-2 leading-relaxed">
+              <ul className="list-disc pl-6 text-base font-normal text-muted-foreground space-y-2 leading-relaxed">
                 <li>
                   Operational and Management Pressures: Example; sudden shifts
                   in crowd movement or emergency protocols that disrupt WaSH
@@ -564,7 +564,7 @@ export default function KWashFramework() {
               <p className="text-base font-semibold">
                 Why Pressure Matters in K-WaSH
               </p>
-              <ul className="list-disc pl-6 text-base text-muted-foreground space-y-2 leading-relaxed">
+              <ul className="list-disc pl-6 text-base font-normal text-muted-foreground space-y-2 leading-relaxed">
                 <li>Understanding pressures allows stakeholders to:</li>
                 <li>
                   Trace the causal link between human behaviour and system
@@ -590,7 +590,7 @@ export default function KWashFramework() {
 
       {/* DPSIR Diagram Text (verbatim) */}
    
-      <h2 className="text-4xl font-extrabold text-center tracking-tight mb-6 leading-tight bg-gradient-to-r from-sky-500 to-fuchsia-500 bg-clip-text text-transparent">
+      <h2 className="text-4xl font-bold text-center tracking-tight mb-6 leading-tight bg-gradient-to-r from-sky-500 to-fuchsia-500 bg-clip-text text-transparent">
         DPSIR Framework: Understanding the WaSH Cycle
       </h2>
       

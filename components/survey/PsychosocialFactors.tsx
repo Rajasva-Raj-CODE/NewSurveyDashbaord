@@ -765,7 +765,7 @@ function IndicatorCard({ title, groups }: { title: string; groups: Group[] }) {
       className="h-full rounded-xl bg-white/70 dark:bg-slate-800/80 border border-indigo-200/50 dark:border-indigo-900/50 shadow-lg hover:shadow-xl transition-all duration-300 backdrop-blur-sm"
     >
       <CardHeader className="p-4 pb-3 border-b border-indigo-200 dark:border-indigo-900">
-        <CardTitle className="text-sm font-semibold text-indigo-700 dark:text-indigo-300">
+        <CardTitle className="text-lg font-semibold text-indigo-700 dark:text-indigo-300">
           {title}
         </CardTitle>
       </CardHeader>
@@ -814,34 +814,90 @@ function HolisticGaugeChart({
     "#10b981", // Dark Green (80-100)
   ];
 
-  // The custom indicator/score text (unchanged)
+  // Dynamic meter line indicator with position calculation
+  const getMeterLineColor = (score: number) => {
+    if (score >= 80) return "#10b981"; // Green
+    if (score >= 60) return "#4ade80"; // Light Green
+    if (score >= 40) return "#facc15"; // Yellow
+    if (score >= 20) return "#f97316"; // Orange
+    return "#ef4444"; // Red
+  };
+
+  // Calculate meter line position based on score (0-100 maps to gauge arc)
+  const calculateMeterPosition = (score: number) => {
+    // Gauge arc is typically 180 degrees (semicircle)
+    // Score 0 = -90 degrees (left), Score 100 = 90 degrees (right)
+    const angle = (score / 100) * 180 - 90;
+    return angle;
+  };
+
+  const meterLineColor = getMeterLineColor(scoreValue);
+  const meterAngle = calculateMeterPosition(scoreValue);
+  
   const changeIndicator = (
     <div
       className="absolute z-10"
       style={{
-        top: "30%",
+        top: "50%",
         left: "50%",
         transform: "translate(-50%, -50%)",
       }}
     >
-      <span
-        className="text-lg font-bold p-1 rounded-lg"
+      {/* Dynamic meter line that rotates based on score */}
+      <div
+        className="relative origin-bottom"
         style={{
-          color: "#10b981",
-          background: "#d1fae5",
-          padding: "4px 10px",
-          boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
+          width: "2px",
+          height: "80px",
+          backgroundColor: meterLineColor,
+          borderRadius: "1px",
+          boxShadow: `0 0 8px ${meterLineColor}60`,
+          transform: `rotate(${meterAngle}deg)`,
+          transformOrigin: "bottom center",
+          transition: "transform 0.8s ease-in-out, background-color 0.3s ease",
         }}
       >
-        ▲ 6 pts
-      </span>
+        {/* Needle tip */}
+        <div
+          className="absolute -top-1 left-1/2 transform -translate-x-1/2 w-2 h-2 rounded-full border border-white"
+          style={{
+            backgroundColor: meterLineColor,
+            boxShadow: `0 0 6px ${meterLineColor}`,
+          }}
+        />
+        {/* Center pivot point */}
+        <div
+          className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-3 h-3 rounded-full border-2 border-white"
+          style={{
+            backgroundColor: meterLineColor,
+            boxShadow: `0 0 8px ${meterLineColor}`,
+          }}
+        />
+      </div>
+      
+      {/* Clean score display */}
+      <div
+        className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-center"
+      >
+        <div
+          className="text-2xl font-bold px-4 py-2 rounded-lg border-2 shadow-lg"
+          style={{
+            color: meterLineColor,
+            borderColor: meterLineColor,
+            backgroundColor: `${meterLineColor}20`,
+            backdropFilter: "blur(10px)",
+          }}
+        >
+          {scoreValue}%
+        </div>
+      </div>
     </div>
   );
 
   return (
     <Card className="h-full rounded-xl p-4 bg-white dark:bg-slate-800 border-2 border-gray-300 dark:border-gray-700 shadow-xl flex flex-col justify-between">
       <CardHeader className="p-0 pb-3 text-center">
-        <CardTitle className="text-lg font-extrabold text-indigo-700 dark:text-indigo-300">
+        <CardTitle className="text-lg font-semibold text-indigo-700 dark:text-indigo-300">
           {indicator} - HOLISTIC AGREEMENT
         </CardTitle>
       </CardHeader>
@@ -862,10 +918,10 @@ function HolisticGaugeChart({
           segments={5}
           segmentColors={segmentColors}
           customSegmentStops={[0, 20, 40, 60, 80, 100]}
-          currentValueText={`${scoreValue}%`}
+          currentValueText=""
           valueFormat="d"
           valueTextFontWeight="800"
-          valueTextFontSize="4.5rem"
+          valueTextFontSize="0rem"
           labelFontSize="10px"
           needleTransitionDuration={500}
         />
@@ -873,7 +929,7 @@ function HolisticGaugeChart({
 
       {/* ADDED: Detailed breakdown in the footer */}
       <CardFooter className="flex flex-col p-3 border-t border-indigo-200 dark:border-indigo-900 mt-2">
-        <p className="text-lg text-muted-foreground font-semibold mb-2">
+        <p className="text-lg font-semibold text-muted-foreground mb-2">
           Detailed Response Breakdown
         </p>
         <div className="grid grid-cols-2 gap-x-6 gap-y-1 text-sm w-full">
@@ -887,7 +943,7 @@ function HolisticGaugeChart({
                 {r}:
               </span>
               <span
-                className={`font-bold ${
+                className={`font-semibold ${
                   r === "Agree" || r === "Strongly Agree"
                     ? "text-green-600 dark:text-green-400"
                     : "text-foreground"
@@ -908,9 +964,11 @@ export default function SurveyDashboard() {
   const indicators = Array.from(new Set(surveyData.map((s) => s.indicator)));
   const [activeIndicator, setActiveIndicator] = useState(indicators[0] || "");
 
-    const allData = useMemo(() => {
-    const filteredData = surveyData.filter((s) => s.indicator === activeIndicator);
-    
+  const allData = useMemo(() => {
+    const filteredData = surveyData.filter(
+      (s) => s.indicator === activeIndicator
+    );
+
     // Sort data to ensure Holistic appears first
     return filteredData.sort((a, b) => {
       if (a.perspective === "Holistic") return -1;
@@ -919,39 +977,37 @@ export default function SurveyDashboard() {
     });
   }, [activeIndicator]);
 
-
-  
-
   return (
     <div className="space-y-10 p-4 md:p-8 min-h-screen bg-gray-50 dark:bg-slate-900">
       {/* Header Section */}
-      <div className="pt-4 pb-4">
-        <h1 className="text-4xl font-extrabold tracking-tight text-center leading-tight bg-gradient-to-r from-sky-500 to-fuchsia-500 bg-clip-text text-transparent sm:text-5xl">
+      <div className="text-center mb-6 py-4 rounded-xl bg-background shadow-xl border border-border/50">
+        <h1 className="text-4xl font-bold tracking-tight text-center leading-tight bg-gradient-to-r from-sky-500 to-fuchsia-500 bg-clip-text text-transparent sm:text-5xl">
           WaSH Survey Dashboard: Psychosocial Factors
         </h1>
-        <p className="text-lg text-muted-foreground text-center mt-2 font-medium">
+        <p className="text-xl font-normal mt-2 text-primary dark:text-primary-foreground/90">
           Key Stakeholder: Floating Population
         </p>
       </div>
 
       {/* Indicator Selection (Tabs) */}
-<div className="flex flex-wrap justify-center gap-3 p-6 bg-white/50 dark:bg-slate-800/50 rounded-2xl shadow-xl border border-gray-200/50 dark:border-slate-700/50 backdrop-blur-sm">
-  {indicators.map((ind) => (
-    <Button
-      key={ind}
-      size="lg"
-      className={`transition-all duration-300 font-bold text-base px-6 py-3 rounded-xl border-2 ${
-        ind === activeIndicator
-          ? "shadow-2xl transform scale-105 text-white border-transparent bg-gradient-to-r from-purple-500 via-pink-500 to-rose-500 hover:from-purple-600 hover:via-pink-600 hover:to-rose-600 hover:shadow-3xl"
-          : "bg-white/80 dark:bg-slate-700/80 text-gray-700 dark:text-gray-300 border-gray-300 dark:border-slate-600 hover:bg-gradient-to-r hover:from-purple-50 hover:via-pink-50 hover:to-rose-50 dark:hover:from-purple-900/20 dark:hover:via-pink-900/20 dark:hover:to-rose-900/20 hover:border-purple-300 dark:hover:border-purple-500 hover:text-purple-700 dark:hover:text-purple-300 hover:shadow-lg"
-      }`}
-      variant={ind === activeIndicator ? "default" : "outline"}
-      onClick={() => setActiveIndicator(ind)}
-    >
-      {ind}
-    </Button>
-  ))}
-</div>
+      <div className="flex flex-wrap justify-center gap-2 sm:gap-3 p-4 sm:p-6 bg-card/80 backdrop-blur rounded-2xl shadow-lg border border-border/40 overflow-x-auto">
+        {indicators.map((ind) => (
+          <Button
+            key={ind}
+            size="lg"
+            className={`transition-all duration-300 font-semibold text-xs sm:text-sm px-3 sm:px-4 md:px-6 py-2 sm:py-3 rounded-full border-2 whitespace-nowrap min-w-0 flex-shrink-0 ${
+              ind === activeIndicator
+                ? "shadow-2xl transform scale-105 text-white border-transparent bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 hover:shadow-3xl"
+                : "bg-card/80 backdrop-blur text-foreground border-border/40 hover:bg-gradient-to-r hover:from-blue-50 hover:to-cyan-50 dark:hover:from-blue-900/20 dark:hover:to-cyan-900/20 hover:border-blue-300 dark:hover:border-blue-500 hover:text-blue-700 dark:hover:text-blue-300 hover:shadow-lg"
+            }`}
+            variant={ind === activeIndicator ? "default" : "outline"}
+            onClick={() => setActiveIndicator(ind)}
+          >
+            <span className="hidden xs:inline">{ind}</span>
+            <span className="xs:hidden">{ind.split(" ")[0]}</span>
+          </Button>
+        ))}
+      </div>
 
       {/* Charts Grid - UPDATED TO SHOW 2 CARDS PER ROW */}
       <div className="pt-4">

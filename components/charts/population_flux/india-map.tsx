@@ -131,10 +131,10 @@ export function IndiaMap({ selectedPhase }: IndiaMapProps) {
                         </p>
                         {tooltipContent.count !== undefined ? (
                             <div className="text-xs mt-1.5">
-                                <p className="text-[11px] text-slate-500">
+                                <p className="text-[11px] font-normal text-slate-500">
                                     Count of Place of Residence
                                 </p>
-                                <p className="mt-0.5">
+                                <p className="mt-0.5 text-sm font-normal">
                                     Count:{" "}
                                     <span className="font-semibold text-slate-900">
                     {tooltipContent.count}
@@ -142,9 +142,9 @@ export function IndiaMap({ selectedPhase }: IndiaMapProps) {
                                 </p>
                             </div>
                         ) : (
-                            <p className="text-slate-500 text-xs mt-1.5">No data</p>
+                            <p className="text-slate-500 text-xs font-normal mt-1.5">Count: 0</p>
                         )}
-                        <p className="text-[10px] text-slate-500 mt-2">
+                        <p className="text-[10px] font-normal text-slate-500 mt-2">
                             Phase: {selectedPhase}
                         </p>
                     </div>

@@ -13,7 +13,7 @@ export default function PopulationFluxChart() {
       <div className="max-w-7xl mx-auto">
         <Card className="shadow-xl">
           <CardHeader className="space-y-4">
-            <CardTitle className="text-2xl md:text-3xl font-bold text-center text-gray-900">
+            <CardTitle className="text-3xl font-semibold text-center text-gray-900">
               Population Flux Across India
             </CardTitle>
           </CardHeader>

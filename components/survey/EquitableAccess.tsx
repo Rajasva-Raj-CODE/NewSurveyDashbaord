@@ -164,7 +164,7 @@ export default function EquitableAccess() {
       icon: <MapPin className="w-5 h-5" />,
       data: proximityData,
       inference:
-        "The data illustrates that **62%** of the floating population respondents had proximity to water infrastructure within **100-200 m** area whereas **38%** had to walk **500m**. This difference could be due to their awareness and sector-wise infrastructure setups.",
+        "The data illustrates that <strong className='text-blue-600 dark:text-blue-400 font-semibold'>62%</strong> of the floating population respondents had proximity to water infrastructure within <strong className='text-green-600 dark:text-green-400 font-semibold'>100-200 m</strong> area whereas <strong className='text-orange-600 dark:text-orange-400 font-semibold'>38%</strong> had to walk <strong className='text-red-600 dark:text-red-400 font-semibold'>500m</strong>. This difference could be due to their awareness and sector-wise infrastructure setups.",
       type: "pie",
     },
     {
@@ -174,7 +174,7 @@ export default function EquitableAccess() {
       icon: <Accessibility className="w-5 h-5" />,
       data: accessibilityData,
       inference:
-        "The respondents mostly reported a **positive perception** towards accessibility. **77%** found it easily accessible, and **23%** found it manageable. None reported difficulty.",
+        "The respondents mostly reported a <strong className='text-green-600 dark:text-green-400 font-semibold'>positive perception</strong> towards accessibility. <strong className='text-blue-600 dark:text-blue-400 font-semibold'>77%</strong> found it easily accessible, and <strong className='text-orange-600 dark:text-orange-400 font-semibold'>23%</strong> found it manageable. None reported difficulty.",
       type: "bar",
     },
     {
@@ -184,7 +184,7 @@ export default function EquitableAccess() {
       icon: <Droplets className="w-5 h-5" />,
       data: waterAvailabilityData,
       inference:
-        "A strong majority of the respondents (**93%**) found water availability to be **sufficient** during the Mela. Merely **7%** had concerns related to sufficiency.",
+        "A strong majority of the respondents (<strong className='text-green-600 dark:text-green-400 font-semibold'>93%</strong>) found water availability to be <strong className='text-blue-600 dark:text-blue-400 font-semibold'>sufficient</strong> during the Mela. Merely <strong className='text-orange-600 dark:text-orange-400 font-semibold'>7%</strong> had concerns related to sufficiency.",
       type: "pie",
     },
     {
@@ -194,7 +194,7 @@ export default function EquitableAccess() {
       icon: <Shield className="w-5 h-5" />,
       data: sanitationAccessData,
       inference:
-        "The accessibility of sanitation infrastructure was mostly positive (**63%** found it accessible/mostly accessible), with only **10%** facing difficulties.",
+        "The accessibility of sanitation infrastructure was mostly positive (<strong className='text-green-600 dark:text-green-400 font-semibold'>63%</strong> found it accessible/mostly accessible), with only <strong className='text-red-600 dark:text-red-400 font-semibold'>10%</strong> facing difficulties.",
       type: "bar",
     },
     {
@@ -204,7 +204,7 @@ export default function EquitableAccess() {
       icon: <Heart className="w-5 h-5" />,
       data: healthConcernsData,
       inference:
-        "An overwhelming **98%** of respondents faced **no health-related concerns**, showcasing good maintenance of the hygienic environment, water quality, and health infrastructure.",
+        "An overwhelming <strong className='text-green-600 dark:text-green-400 font-semibold'>98%</strong> of respondents faced <strong className='text-blue-600 dark:text-blue-400 font-semibold'>no health-related concerns</strong>, showcasing good maintenance of the hygienic environment, water quality, and health infrastructure.",
       type: "pie",
     },
     {
@@ -214,7 +214,7 @@ export default function EquitableAccess() {
       icon: <Trash2 className="w-5 h-5" />,
       data: wasteDisposalData,
       inference:
-        "A combined **86%** of the respondents were in **agreement or strong agreement** towards appropriate waste disposal, with a low **2%** showing disagreement.",
+        "A combined <strong className='text-green-600 dark:text-green-400 font-semibold'>86%</strong> of the respondents were in <strong className='text-blue-600 dark:text-blue-400 font-semibold'>agreement or strong agreement</strong> towards appropriate waste disposal, with a low <strong className='text-red-600 dark:text-red-400 font-semibold'>2%</strong> showing disagreement.",
       type: "bar",
     },
   ];
@@ -334,16 +334,13 @@ export default function EquitableAccess() {
       <div className="space-y-6 p-4">
         {/* Header Section */}
         <div className="text-center mb-6 py-4 rounded-xl bg-background shadow-xl border border-border/50">
-          <h1 className="text-4xl font-extrabold tracking-tight text-center leading-tight bg-gradient-to-r from-sky-500 to-fuchsia-500 bg-clip-text text-transparent sm:text-5xl">
+          <h1 className="text-4xl font-bold tracking-tight text-center leading-tight bg-gradient-to-r from-sky-500 to-fuchsia-500 bg-clip-text text-transparent sm:text-5xl">
             Equitable Access to WaSH Services
           </h1>
-          <p className="text-xl font-medium mt-2 text-primary dark:text-primary-foreground/90">
+          <p className="text-xl font-normal mt-2 text-primary dark:text-primary-foreground/90">
             Key Stakeholder: Floating Population Survey Insights
           </p>
-          <div className="flex items-center justify-center space-x-2 text-sm text-muted-foreground mt-3">
-            <Layers className="w-4 h-4 text-secondary" />
-            <span className="font-semibold">Indicator | Definition | Data | Inference</span>
-          </div>
+ 
         </div>
 
         {/* Compact Grid Layout - Equal distribution */}
@@ -362,7 +359,7 @@ export default function EquitableAccess() {
                   <div className={`p-2 rounded-full bg-gradient-to-br ${i % 2 === 0 ? 'from-cyan-500 to-blue-600' : 'from-green-500 to-teal-600'} text-white shadow-lg`}>
                     {indicator.icon}
                   </div>
-                  <h4 className="font-bold text-lg leading-tight text-foreground line-clamp-2">
+                  <h4 className="font-semibold text-lg leading-tight text-foreground line-clamp-2">
                     {indicator.title}
                   </h4>
                 </div>
@@ -376,7 +373,7 @@ export default function EquitableAccess() {
                       <p className="text-xs uppercase font-bold text-primary mb-1">
                         Definition
                       </p>
-                      <p className="text-sm text-foreground leading-relaxed">
+                      <p className="text-sm font-normal text-foreground leading-relaxed">
                         {indicator.definition}
                       </p>
                     </div>
@@ -386,17 +383,14 @@ export default function EquitableAccess() {
                       <p className="text-xs uppercase font-bold text-secondary-foreground mb-1">
                         Inference
                       </p>
-                      <p className="text-sm text-foreground leading-relaxed">
-                        {indicator.inference}
+                      <p className="text-sm font-normal text-foreground leading-relaxed" dangerouslySetInnerHTML={{ __html: indicator.inference }}>
                       </p>
                     </div>
                   </div>
                   
                   {/* Chart Section - Now with proper bar chart sizing */}
                   <div className="bg-white/50 dark:bg-slate-900/40 p-3 rounded-xl border border-border/50 shadow-inner flex flex-col">
-                    <h5 className="text-sm font-semibold text-secondary-foreground mb-2 text-center flex items-center justify-center">
-                      <span className="mr-1">📊</span> Indicators
-                    </h5>
+            
                     <div className="flex-1">
                       {renderChart(indicator)}
                     </div>
@@ -417,13 +411,13 @@ export default function EquitableAccess() {
                 <div className="p-2 rounded-full bg-gradient-to-br from-fuchsia-500 to-violet-600 text-white shadow-lg">
                   <Handshake className="w-5 h-5" />
                 </div>
-                <h4 className="font-bold text-lg">Handwashing Stations Ratio</h4>
+                <h4 className="font-semibold text-lg">Handwashing Stations Ratio</h4>
               </div>
-              <p className="text-sm text-muted-foreground mb-3">
+              <p className="text-sm font-normal text-muted-foreground mb-3">
                 Availability of handwashing points supporting sanitation use, measured against toilet density.
               </p>
               <div className="bg-white dark:bg-slate-900/90 p-4 rounded-xl border border-fuchsia-300 dark:border-fuchsia-700 text-center shadow-inner">
-                <div className="text-5xl font-extrabold text-fuchsia-600 dark:text-fuchsia-400 mb-1 leading-none">2:10</div>
+                <div className="text-5xl font-bold text-fuchsia-600 dark:text-fuchsia-400 mb-1 leading-none">2:10</div>
                 <div className="text-md font-semibold text-foreground">Handwashing stations per 10 toilets</div>
               </div>
             </CardContent>
@@ -437,22 +431,22 @@ export default function EquitableAccess() {
                 <div className="p-2 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 text-white shadow-lg">
                   <Info className="w-5 h-5" />
                 </div>
-                <h4 className="font-bold text-lg">Key Observational Facts</h4>
+                <h4 className="font-semibold text-lg">Key Observational Facts</h4>
               </div>
-              <p className="text-sm text-muted-foreground mb-3">
+              <p className="text-sm font-normal text-muted-foreground mb-3">
                 Additional observations and triangulation notes from on-site assessments and data sources.
               </p>
               <ul className="list-none text-sm space-y-2 leading-relaxed">
                 <li className="flex items-start text-foreground">
-                    <span className="text-green-500 mr-2 text-lg font-bold flex-shrink-0">✓</span>
-                    <p>
-                        Our Observations and stakeholder consultations reveal that **no people were drinking water from surface sources**, i.e. from the rivers.
+                    <span className="text-green-500 mr-2 text-lg font-semibold flex-shrink-0">✓</span>
+                    <p className="text-sm font-normal">
+                        Our Observations and stakeholder consultations reveal that <strong className='text-green-600 dark:text-green-400 font-semibold'>no people were drinking water from surface sources</strong>, i.e. from the rivers.
                     </p>
                 </li>
                 <li className="flex items-start text-foreground">
-                    <span className="text-green-500 mr-2 text-lg font-bold flex-shrink-0">✓</span>
-                    <p>
-                        Data from PMA indicates that the **availability of sanitation facility** such as toilets and handwashing stations was **40 person per hour per toilet**.
+                    <span className="text-green-500 mr-2 text-lg font-semibold flex-shrink-0">✓</span>
+                    <p className="text-sm font-normal">
+                        Data from PMA indicates that the <strong className='text-blue-600 dark:text-blue-400 font-semibold'>availability of sanitation facility</strong> such as toilets and handwashing stations was <strong className='text-green-600 dark:text-green-400 font-semibold'>40 person per hour per toilet</strong>.
                     </p>
                 </li>
               </ul>

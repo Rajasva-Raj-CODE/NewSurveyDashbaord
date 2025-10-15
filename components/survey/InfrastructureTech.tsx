@@ -20,7 +20,6 @@ import {
   Cell,
   Treemap,
   ResponsiveContainer,
-  RadialBarChart,
 } from "recharts";
 import {
   Pipette,
@@ -50,11 +49,11 @@ function SectionHeadingInline({
 }: SectionHeadingProps) {
   return (
     <div className={className}>
-      <h2 className="text-2xl md:text-3xl font-semibold tracking-tight mb-1 flex items-center gap-2">
+      <h2 className="text-3xl font-semibold tracking-tight mb-1 flex items-center gap-2">
         {icon ? <span className="text-primary">{icon}</span> : null}
         <span>{title}</span>
       </h2>
-      {subtitle ? <p className="text-muted-foreground">{subtitle}</p> : null}
+      {subtitle ? <p className="text-base font-normal text-muted-foreground">{subtitle}</p> : null}
     </div>
   );
 }
@@ -260,27 +259,30 @@ export default function InfrastructureTech() {
   };
 
   // Colors for pie chart segments
-  const COLORS = [
-    "#8884d8",
-    "#82ca9d",
-    "#ffc658",
-    "#ff7300",
-    "#00ff00",
-    "#ff00ff",
-    "#00ffff",
-    "#ffff00",
-    "#ff0000",
-    "#0000ff",
+const COLORS = [
+    "#8884d8", // Muted Lavender (From your original list)
+    "#b3c890", // Soft Mint Green (From your original list)
+    "#f7b783", // Soft Peach/Coral
+    "#b87333", // Coppery Bronze
+    "#4b8e61", // Deep Forest Green
+    "#9370db", // Medium Purple/Amethyst
+    "#5bc0de", // Dusty Teal/Sky Blue
+    "#d9b35b", // Muted Gold/Mustard
+    "#cc6666", // Dusty Rose/Brick Red
+    "#5bc0de", // Steel Blue
   ];
 
   return (
     <>
-      <h1 className="text-3xl font-bold tracking-tight mb-4 text-center leading-tight bg-gradient-to-r from-sky-500 to-fuchsia-500 bg-clip-text text-transparent">
-        State of Infrastructure and Technology of WASH services
-        <span className="text-primary block text-lg font-normal mt-1">
-          (Key Stakeholder: Government officials)
-        </span>
-      </h1>
+      {/* Header Section */}
+      <div className="text-center mb-6 py-4 rounded-xl bg-background shadow-xl border border-border/50">
+        <h1 className="text-4xl font-bold tracking-tight text-center leading-tight bg-gradient-to-r from-sky-500 to-fuchsia-500 bg-clip-text text-transparent sm:text-5xl">
+          State of Infrastructure and Technology of WASH services
+        </h1>
+        <p className="text-xl font-normal mt-2 text-primary dark:text-primary-foreground/90">
+          Key Stakeholder: Government officials
+        </p>
+      </div>
 
       <SectionHeadingInline
         className="mb-4"
@@ -341,11 +343,11 @@ export default function InfrastructureTech() {
                   </div>
 
                   <div className="mt-2">
-                    <h3 className="text-base font-bold leading-snug text-white">
+                    <h3 className="text-lg font-semibold leading-snug text-white">
                       {subRow.indicator}
                     </h3>
                     {subRow.definition || subRow.parentDefinition ? (
-                      <p className="mt-1 text-base text-white/90 line-clamp-3">
+                      <p className="mt-1 text-base font-normal text-white/90 line-clamp-3">
                         {subRow.definition || subRow.parentDefinition}
                       </p>
                     ) : null}
@@ -353,7 +355,7 @@ export default function InfrastructureTech() {
 
                   {subRow.data?.[0]?.value ? (
                     <div className="mt-2">
-                      <p className="text-2xl font-extrabold text-white drop-shadow-sm">
+                      <p className="text-2xl font-bold text-white drop-shadow-sm">
                         {subRow.data[0].value}
                       </p>
                     </div>
@@ -389,12 +391,12 @@ export default function InfrastructureTech() {
           {/* Decorative Accent (Purple) */}
           <div className="absolute top-0 left-0 h-full w-2 bg-purple-500 rounded-l-lg opacity-80" />
           <CardHeader className="pb-2 pt-0 px-0">
-            <h3 className="text-lg font-bold tracking-tight text-gray-900 dark:text-gray-50">
+            <h3 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-gray-50">
               Toilet Infrastructure Overview
             </h3>
           </CardHeader>
           <CardContent className="pt-0 px-0 pb-0">
-            <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-3 border-l-2 border-gray-200 dark:border-gray-700 pl-3">
+            <p className="text-sm font-normal text-gray-600 dark:text-gray-300 leading-relaxed mb-3 border-l-2 border-gray-200 dark:border-gray-700 pl-3">
               This indicator displays the diversity and distribution of toilets
               available during Maha Kumbh Mela 2025.
             </p>
@@ -404,7 +406,7 @@ export default function InfrastructureTech() {
                 <p className="text-xs font-medium uppercase text-purple-600 dark:text-purple-400 mb-1">
                   Total Types Available
                 </p>
-                <p className="text-2xl font-extrabold text-purple-700 dark:text-purple-400">
+                <p className="text-2xl font-bold text-purple-700 dark:text-purple-400">
                   10
                 </p>
               </div>
@@ -413,7 +415,7 @@ export default function InfrastructureTech() {
                 <p className="text-xs font-medium uppercase text-purple-600 dark:text-purple-400 mb-1">
                   Total Units Deployed
                 </p>
-                <p className="text-2xl font-extrabold text-purple-700 dark:text-purple-400">
+                <p className="text-2xl font-bold text-purple-700 dark:text-purple-400">
                   1,50,000
                 </p>
               </div>
@@ -429,10 +431,10 @@ export default function InfrastructureTech() {
           className="rounded-xl bg-gradient-to-br from-slate-50 to-indigo-50 dark:from-slate-900/40 dark:to-indigo-900/30 backdrop-blur-sm border border-border/50 shadow-md hover:bg-primary/5 dark:hover:bg-primary/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
         >
           <CardHeader className="pb-3">
-            <CardTitle className="text-xl font-bold">
+            <CardTitle className="text-xl font-semibold">
               Toilet Types Distribution
             </CardTitle>
-            <CardDescription className="text-sm">
+            <CardDescription className="text-sm font-normal">
               Pie chart showing the distribution of different toilet types with
               detailed breakdown
             </CardDescription>
@@ -498,7 +500,7 @@ export default function InfrastructureTech() {
                         <p className="text-xs font-semibold truncate">
                           {toilet.type}
                         </p>
-                        <p className="text-sm text-muted-foreground">
+                        <p className="text-sm font-normal text-muted-foreground">
                           {toilet.value.toLocaleString()} units ({percentage}%)
                         </p>
                       </div>
@@ -518,10 +520,10 @@ export default function InfrastructureTech() {
           className="rounded-xl p-4 shadow-xl border-gray-200 dark:border-gray-700 dark:bg-gray-850"
         >
           <CardHeader className="pb-3 pt-0 px-0">
-            <h3 className="text-xl font-bold tracking-tight text-gray-900 dark:text-gray-50">
+            <h3 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-gray-50">
               Standard Toilet Types
             </h3>
-            <CardDescription className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+            <CardDescription className="text-sm font-normal text-gray-500 dark:text-gray-400 mt-1">
               Visual examples of toilet types used in Maha Kumbh Mela 2025.
             </CardDescription>
           </CardHeader>
@@ -561,7 +563,7 @@ export default function InfrastructureTech() {
                       />
                       {/* Modern Caption Bar at bottom */}
                       <div className="absolute inset-x-0 bottom-0 bg-black/60 backdrop-blur-sm px-2 py-1">
-                        <p className="text-xs font-light text-white/90">
+                        <p className="text-xs font-normal text-white/90">
                           {item.caption}
                         </p>
                       </div>
@@ -600,7 +602,7 @@ export default function InfrastructureTech() {
           {/* Decorative Accent (Red) */}
           <div className="absolute top-0 left-0 h-full w-2 bg-red-500 rounded-l-lg opacity-80" />
           <CardHeader className="pb-3 pt-0 px-0">
-            <h3 className="text-lg font-bold tracking-tight text-gray-900 dark:text-gray-50">
+            <h3 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-gray-50">
               Wastewater Disposal Infrastructure
             </h3>
           </CardHeader>
@@ -610,7 +612,7 @@ export default function InfrastructureTech() {
                 <p className="text-xs font-medium uppercase text-red-600 dark:text-red-400 mb-2">
                   Definition
                 </p>
-                <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed border-l-2 border-gray-200 dark:border-gray-700 pl-3">
+                <p className="text-sm font-normal text-gray-600 dark:text-gray-300 leading-relaxed border-l-2 border-gray-200 dark:border-gray-700 pl-3">
                   This indicator talks about wastewater disposal points other
                   than Treatment facilities. One such facility is{" "}
                   <strong>Stabilization Ponds</strong>.
@@ -620,7 +622,7 @@ export default function InfrastructureTech() {
                 <p className="text-xs font-medium uppercase text-red-600 dark:text-red-400 mb-1">
                   Total Stabilization Ponds
                 </p>
-                <p className="text-2xl font-extrabold text-red-700 dark:text-red-400">
+                <p className="text-2xl font-bold text-red-700 dark:text-red-400">
                   50
                 </p>
               </div>
@@ -635,7 +637,7 @@ export default function InfrastructureTech() {
               />
               {/* Modern Caption Bar */}
               <div className="absolute inset-x-0 bottom-0 bg-black/60 backdrop-blur-sm px-3 py-1">
-                <p className="text-xs font-light text-white/90">
+                <p className="text-xs font-normal text-white/90">
                   <strong>Figure E:</strong> Wastewater Stabilization Pond in
                   Sector 22
                 </p>
@@ -664,24 +666,13 @@ export default function InfrastructureTech() {
 
           <CardHeader className="pb-3 pt-0 px-0">
             <div className="flex items-start gap-3">
-              <div
-                className="
-            p-2 
-            bg-orange-500/10 
-            text-orange-500 
-            rounded-lg 
-            flex-shrink-0
-            self-start
-          "
-              >
-                {iconFor("wastewater collection")}
-              </div>
+           
 
               <div className="flex flex-col">
-                <h3 className="text-lg font-bold tracking-tight text-gray-900 dark:text-gray-50">
+                <h3 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-gray-50">
                   Wastewater Collection
                 </h3>
-                <CardDescription className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                <CardDescription className="text-xs font-normal text-gray-500 dark:text-gray-400 mt-1">
                   Infrastructure & System Overview
                 </CardDescription>
               </div>
@@ -693,7 +684,7 @@ export default function InfrastructureTech() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent z-10"></div>
 
               <div className="w-full max-w-4xl px-3 pt-4 pb-3 z-20 text-center">
-                <p className="text-sm text-gray-800 dark:text-gray-200 leading-snug">
+                <p className="text-sm font-normal text-gray-800 dark:text-gray-200 leading-snug">
                   Kutcha drains were laid for wastewater collection, disposed at
                   a stabilization pond for bio culturing, and then transported
                   to STPs.
@@ -718,8 +709,8 @@ export default function InfrastructureTech() {
                 />
 
                 <div className="absolute inset-x-0 bottom-0 bg-black/60 backdrop-blur-sm px-4 py-2 z-20">
-                  <p className="text-sm font-semibold text-white">
-                    Figure K: Kutcha drain in Sector 19 typology in the Maha
+                  <p className="text-xs font-normal text-white/90">
+                    <strong>Figure F:</strong> Kutcha drain in Sector 19 typology in the Maha
                     Kumbh Mela 2025
                   </p>
                 </div>
@@ -772,10 +763,10 @@ export default function InfrastructureTech() {
               </div>
 
               <div className="flex flex-col">
-                <h3 className="text-lg font-bold tracking-tight text-gray-900 dark:text-gray-50">
+                <h3 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-gray-50">
                   Wastewater Transportation
                 </h3>
-                <CardDescription className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                <CardDescription className="text-xs font-normal text-gray-500 dark:text-gray-400 mt-1">
                   Infrastructure & Fleet Overview
                 </CardDescription>
               </div>
@@ -783,7 +774,7 @@ export default function InfrastructureTech() {
           </CardHeader>
 
           <CardContent className="pt-3 px-0 pb-0">
-            <p className="text-sm text-gray-600 dark:text-gray-300 mb-3 leading-snug">
+            <p className="text-sm font-normal text-gray-600 dark:text-gray-300 mb-3 leading-snug">
               This indicator displays diversity and distribution of vehicles
               deployed to transport wastewater from Kumbh catchment to nearby
               treatment plants.
@@ -796,7 +787,7 @@ export default function InfrastructureTech() {
                 <p className="text-xs font-medium uppercase text-gray-500 dark:text-gray-400 mb-1 truncate">
                   Total Suction Vehicles
                 </p>
-                <p className="text-2xl font-extrabold text-teal-600 dark:text-teal-400">
+                <p className="text-2xl font-bold text-teal-600 dark:text-teal-400">
                   300
                 </p>
               </div>
@@ -806,7 +797,7 @@ export default function InfrastructureTech() {
                 <p className="text-xs font-medium uppercase text-gray-500 dark:text-gray-400 mb-1 truncate">
                   PMA Owned Fleet
                 </p>
-                <p className="text-2xl font-extrabold text-teal-600 dark:text-teal-400">
+                <p className="text-2xl font-bold text-teal-600 dark:text-teal-400">
                   90
                 </p>
               </div>
@@ -1225,30 +1216,30 @@ export default function InfrastructureTech() {
               {[
                 {
                   caption:
-                    "Figure F: Signages informing location of female toilets in Sector 22",
+                    "Figure G: Signages informing location of female toilets in Sector 22",
                   src: "figure_f.png",
                 },
                 {
-                  caption: "Figure G: Signages informing toilets in sector 16",
+                  caption: "Figure H: Signages informing toilets in sector 16",
                   src: "figure_g.png",
                 },
                 {
-                  caption: "Figure H: Gender segregated toilets in Sector 17",
+                  caption: "Figure I: Gender segregated toilets in Sector 17",
                   src: "figure_h.png",
                 },
                 {
                   caption:
-                    "Figure I: Signages indicating changing rooms for women",
+                    "Figure J: Signages indicating changing rooms for women",
                   src: "figure_i.png",
                 },
                 {
                   caption:
-                    "Figure L: Signage for judicious usage of Water for pilgrim population",
+                    "Figure K: Signage for judicious usage of Water for pilgrim population",
                   src: "figure_l.jpeg",
                 },
                 {
                   caption:
-                    "Figure M: Signage creating awareness about circular economy amongst pilgrim population",
+                    "Figure L: Signage creating awareness about circular economy amongst pilgrim population",
                   src: "figure_m.jpeg",
                 },
               ].map((item) => (
